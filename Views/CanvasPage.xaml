@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="Canvas.Views.CanvasPage"
+             Title="Draw">
+
+<Grid RowDefinitions="2*, *, 100"
+      ColumnDefinitions="*, 2*">
+    <StackLayout Grid.Row="0"
+                Grid.Column="1">
+        <mct:DrawingView x:Name="DrawingCanvas"
+            BackgroundColor="White"
+            WidthRequest="800"
+            HeightRequest="800"
+            HorizontalOptions="Center"
+            IsMultiLineModeEnabled="True"
+            LineColor="{Binding ToolColor}"   
+            LineWidth="{Binding ToolWidth}" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal"
+                 Grid.Row="0"
+                 Grid.Column="0">
+        <Button x:Name="ChangeColorRed"
+            Text ="Red"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            BackgroundColor="White"
+            WidthRequest="100"
+            HeightRequest="100"
+            Clicked="OnColorSelection"  />
+        <Button x:Name="ChangeColorBlue"
+            Text="Blue"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            BackgroundColor="White"
+            WidthRequest="100"
+            HeightRequest="100"
+            Clicked="OnColorSelection"  />
+        <Button x:Name="ChangeColorBlack"
+            Text="Black"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            BackgroundColor="White"
+            WidthRequest="100"
+            HeightRequest="100"
+            Clicked="OnColorSelection"  />
+    </StackLayout>
+    <StackLayout Grid.Row="1"
+                Orientation="Vertical">
+        <Label Text="{Binding Source={x:Reference ChangeWidth}, Path=Value, StringFormat='Brush Width = {0}'}"
+            Grid.Column="0"
+            HorizontalOptions="Center"/>
+        <Slider x:Name="ChangeWidth"
+            Grid.Column="1"
+            Minimum="1" 
+            Maximum="10" 
+            Value="{Binding ToolWidth}" />
+    </StackLayout>
+    <Button x:Name="SaveImage"
+            Grid.Row="2"
+            Grid.Column="0"
+        Text="Save"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        BackgroundColor="White"
+        WidthRequest="100"
+        HeightRequest="100"
+        Clicked="OnSaveImagePressed"   />
+    </Grid>
+
+</ContentPage>
