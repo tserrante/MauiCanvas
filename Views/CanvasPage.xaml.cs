@@ -37,5 +37,10 @@ public partial class CanvasPage : ContentPage
 			await System.IO.File.WriteAllBytesAsync(string.Concat(path, @"\Test.png"), memoryStream.ToArray());
 		}
 	}
+
+    private void ClearDrawingView_Clicked(object sender, EventArgs e)
+    {
+		DrawingCanvas.Lines.Clear();
+    }
 }
 
