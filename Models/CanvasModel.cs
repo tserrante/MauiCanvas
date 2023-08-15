@@ -12,8 +12,5 @@ namespace Canvas.Models
         public Color ToolColor { get; set; } = Colors.Black;
         public int ToolWidth { get; set; } = 5;
         public CanvasModel() { }
-
-
-
     }
 }

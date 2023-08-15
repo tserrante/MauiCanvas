@@ -21,32 +21,21 @@ public partial class CanvasPage : ContentPage
 	{
 		viewModel.ToolColor = Color.Parse((sender as Button).Text);
 	}
-	private async void OnSaveImagePressed(object sender, EventArgs e) 
+	private async void OnSaveButtonPressed(object sender, EventArgs e) 
 	{
-		//if(DrawingCanvas.has)
 		using var stream = await DrawingCanvas.GetImageStream(800, 800);
-		//DrawingCanvas.GetImageStream(DrawingCanvas.Lines, new Size(800, 800), DrawingCanvas.BackgroundColor);
 		using var memoryStream = new MemoryStream();
 		stream.CopyTo(memoryStream);
 
 		stream.Position = 0;
 		memoryStream.Position = 0;
 
-#if WINDOWS
-
-		//string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"Maui-Paint");
+		
 		string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 		if(Directory.Exists(path))
 		{
 			await System.IO.File.WriteAllBytesAsync(string.Concat(path, @"\Test.png"), memoryStream.ToArray());
 		}
-
-#elif ANDROID
-
-#elif IOS || MACCATALYST
-
-#endif
-
 	}
 }
 
