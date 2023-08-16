@@ -42,5 +42,10 @@ public partial class CanvasPage : ContentPage
     {
 		DrawingCanvas.Lines.Clear();
     }
+
+    private void OnOpenImagePressed(object sender, EventArgs e)
+    {
+
+    }
 }
 
